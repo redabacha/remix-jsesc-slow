@@ -6,12 +6,14 @@ runtime: node v16.16.0 (x64-linux)
 
 benchmark                 time (avg)             (min … max)       p75       p99      p995
 ------------------------------------------------------------ -----------------------------
-escapeHtml             19.48 ms/iter   (17.67 ms … 27.29 ms)  19.03 ms  27.29 ms  27.29 ms
-jsesc                 263.58 ms/iter (238.61 ms … 290.01 ms) 267.14 ms 290.01 ms 290.01 ms
-serialize-javascript   41.13 ms/iter   (39.22 ms … 55.05 ms)   40.3 ms  55.05 ms  55.05 ms
+escapeHtml             18.35 ms/iter   (17.29 ms … 29.15 ms)  17.98 ms  29.15 ms  29.15 ms
+jsesc                    260 ms/iter  (236.51 ms … 340.8 ms) 266.27 ms  340.8 ms  340.8 ms
+js-string-escape      103.71 ms/iter  (84.82 ms … 120.28 ms) 107.83 ms 120.28 ms 120.28 ms
+serialize-javascript   40.98 ms/iter    (39.17 ms … 49.9 ms)  41.14 ms   49.9 ms   49.9 ms
 
 summary
   escapeHtml
-   2.11x faster than serialize-javascript
-   13.53x faster than jsesc
+   2.23x faster than serialize-javascript
+   5.65x faster than js-string-escape
+   14.17x faster than jsesc
 ```
