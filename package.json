@@ -3,6 +3,7 @@
   "dependencies": {
     "js-string-escape": "^1.0.1",
     "jsesc": "^3.0.2",
+    "json-stable-stringify": "^1.0.1",
     "mitata": "^0.1.6",
     "serialize-javascript": "^6.0.0"
   }
