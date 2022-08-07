@@ -14,22 +14,26 @@ runtime: node v16.16.0 (x64-linux)
 
 benchmark                                       time (avg)             (min … max)       p75       p99      p995
 ---------------------------------------------------------------------------------- -----------------------------
-escapeHtml                                   17.98 ms/iter   (16.19 ms … 26.86 ms)  17.82 ms  26.86 ms  26.86 ms
-escapeHtml w/ fast-json-stable-stringify    100.91 ms/iter  (84.54 ms … 129.52 ms)  98.44 ms 129.52 ms 129.52 ms
-escapeHtml w/ json-stable-stringify          98.19 ms/iter  (73.04 ms … 138.35 ms) 108.31 ms 138.35 ms 138.35 ms
-escapeHtml w/ json-stringify-deterministic   99.25 ms/iter  (81.98 ms … 125.21 ms) 115.41 ms 125.21 ms 125.21 ms
-jsesc                                       256.69 ms/iter (243.34 ms … 290.21 ms) 258.59 ms 290.21 ms 290.21 ms
-js-string-escape                             99.69 ms/iter  (85.58 ms … 138.27 ms) 106.27 ms 138.27 ms 138.27 ms
-serialize-javascript                         43.55 ms/iter   (38.71 ms … 70.74 ms)  41.76 ms  70.74 ms  70.74 ms
+escapeHtml                                   18.69 ms/iter   (17.17 ms … 32.03 ms)  17.95 ms  32.03 ms  32.03 ms
+escapeHtml w/ fast-json-stable-stringify      99.6 ms/iter  (86.78 ms … 146.71 ms)  97.41 ms 146.71 ms 146.71 ms
+escapeHtml w/ json-stable-stringify         103.18 ms/iter  (75.77 ms … 134.89 ms) 116.19 ms 134.89 ms 134.89 ms
+escapeHtml w/ json-stringify-deterministic  105.39 ms/iter  (89.47 ms … 131.08 ms) 115.49 ms 131.08 ms 131.08 ms
+escapeHtml w/ superjson.stringify           351.23 ms/iter    (322 ms … 432.56 ms) 362.27 ms 432.56 ms 432.56 ms
+jsesc                                       258.64 ms/iter (237.88 ms … 289.99 ms) 263.97 ms 289.99 ms 289.99 ms
+js-string-escape                            106.71 ms/iter  (92.13 ms … 132.33 ms) 117.55 ms 132.33 ms 132.33 ms
+serialize-javascript                         43.52 ms/iter   (40.56 ms … 73.23 ms)  42.22 ms  73.23 ms  73.23 ms
+remix-typedjson serialize                    42.35 ms/iter   (40.97 ms … 50.97 ms)  42.53 ms  50.97 ms  50.97 ms
 
 summary
   escapeHtml
-   2.42x faster than serialize-javascript
-   5.46x faster than escapeHtml w/ json-stable-stringify
-   5.52x faster than escapeHtml w/ json-stringify-deterministic
-   5.55x faster than js-string-escape
-   5.61x faster than escapeHtml w/ fast-json-stable-stringify
-   14.28x faster than jsesc
+   2.27x faster than remix-typedjson serialize
+   2.33x faster than serialize-javascript
+   5.33x faster than escapeHtml w/ fast-json-stable-stringify
+   5.52x faster than escapeHtml w/ json-stable-stringify
+   5.64x faster than escapeHtml w/ json-stringify-deterministic
+   5.71x faster than js-string-escape
+   13.84x faster than jsesc
+   18.79x faster than escapeHtml w/ superjson.stringify
 ```
 
 ## deno
@@ -40,22 +44,26 @@ runtime: deno 1.24.2 (x86_64-unknown-linux-gnu)
 
 benchmark                                       time (avg)             (min … max)       p75       p99      p995
 ---------------------------------------------------------------------------------- -----------------------------
-escapeHtml                                   18.27 ms/iter         (16 ms … 28 ms)     18 ms     28 ms     28 ms
-escapeHtml w/ fast-json-stable-stringify     87.75 ms/iter        (78 ms … 106 ms)     96 ms    106 ms    106 ms
-escapeHtml w/ json-stable-stringify          80.47 ms/iter        (60 ms … 104 ms)     88 ms    104 ms    104 ms
-escapeHtml w/ json-stringify-deterministic   91.25 ms/iter        (68 ms … 134 ms)    100 ms    134 ms    134 ms
-jsesc                                       246.92 ms/iter       (224 ms … 280 ms)    254 ms    280 ms    280 ms
-js-string-escape                             94.38 ms/iter        (76 ms … 116 ms)    104 ms    116 ms    116 ms
-serialize-javascript                          38.7 ms/iter         (36 ms … 50 ms)     38 ms     50 ms     50 ms
+escapeHtml                                   18.21 ms/iter         (16 ms … 28 ms)     18 ms     28 ms     28 ms
+escapeHtml w/ fast-json-stable-stringify     91.63 ms/iter        (78 ms … 112 ms)     98 ms    112 ms    112 ms
+escapeHtml w/ json-stable-stringify          78.63 ms/iter        (66 ms … 104 ms)     86 ms    104 ms    104 ms
+escapeHtml w/ json-stringify-deterministic      91 ms/iter        (68 ms … 114 ms)     98 ms    114 ms    114 ms
+escapeHtml w/ superjson.stringify           282.17 ms/iter       (222 ms … 330 ms)    296 ms    330 ms    330 ms
+jsesc                                        257.5 ms/iter       (214 ms … 316 ms)    262 ms    316 ms    316 ms
+js-string-escape                             93.13 ms/iter        (68 ms … 140 ms)    100 ms    140 ms    140 ms
+serialize-javascript                         37.17 ms/iter         (34 ms … 56 ms)     36 ms     56 ms     56 ms
+remix-typedjson serialize                     39.3 ms/iter         (36 ms … 52 ms)     40 ms     52 ms     52 ms
 
 summary
   escapeHtml
-   2.12x faster than serialize-javascript
-   4.4x faster than escapeHtml w/ json-stable-stringify
-   4.8x faster than escapeHtml w/ fast-json-stable-stringify
-   4.99x faster than escapeHtml w/ json-stringify-deterministic
-   5.17x faster than js-string-escape
-   13.52x faster than jsesc
+   2.04x faster than serialize-javascript
+   2.16x faster than remix-typedjson serialize
+   4.32x faster than escapeHtml w/ json-stable-stringify
+   5x faster than escapeHtml w/ json-stringify-deterministic
+   5.03x faster than escapeHtml w/ fast-json-stable-stringify
+   5.11x faster than js-string-escape
+   14.14x faster than jsesc
+   15.49x faster than escapeHtml w/ superjson.stringify
 ```
 
 ## bun
@@ -66,20 +74,24 @@ runtime: bun 0.1.7 (x64-linux)
 
 benchmark                                       time (avg)             (min … max)       p75       p99      p995
 ---------------------------------------------------------------------------------- -----------------------------
-escapeHtml                                   15.62 ms/iter    (12.57 ms … 29.7 ms)  17.04 ms   29.7 ms   29.7 ms
-escapeHtml w/ fast-json-stable-stringify     67.98 ms/iter  (38.69 ms … 118.54 ms)  78.15 ms 118.54 ms 118.54 ms
-escapeHtml w/ json-stable-stringify           92.7 ms/iter     (75 ms … 121.41 ms)  95.96 ms 121.41 ms 121.41 ms
-escapeHtml w/ json-stringify-deterministic  104.41 ms/iter   (83.5 ms … 128.75 ms) 115.91 ms 128.75 ms 128.75 ms
-jsesc                                       377.89 ms/iter  (338.7 ms … 419.61 ms) 409.34 ms 419.61 ms 419.61 ms
-js-string-escape                              56.6 ms/iter   (50.62 ms … 66.82 ms)   60.9 ms  66.82 ms  66.82 ms
-serialize-javascript                         43.56 ms/iter      (37 ms … 65.06 ms)  51.06 ms  65.06 ms  65.06 ms
+escapeHtml                                   16.52 ms/iter   (12.63 ms … 27.59 ms)   19.2 ms  27.59 ms  27.59 ms
+escapeHtml w/ fast-json-stable-stringify     71.21 ms/iter  (36.81 ms … 115.82 ms)  85.07 ms 115.82 ms 115.82 ms
+escapeHtml w/ json-stable-stringify          86.25 ms/iter  (75.94 ms … 100.95 ms)  88.78 ms 100.95 ms 100.95 ms
+escapeHtml w/ json-stringify-deterministic  102.73 ms/iter  (86.99 ms … 123.89 ms) 113.67 ms 123.89 ms 123.89 ms
+escapeHtml w/ superjson.stringify           335.48 ms/iter (306.11 ms … 375.03 ms) 346.22 ms 375.03 ms 375.03 ms
+jsesc                                       362.84 ms/iter (311.86 ms … 411.93 ms) 378.95 ms 411.93 ms 411.93 ms
+js-string-escape                             57.69 ms/iter   (49.14 ms … 77.58 ms)  64.16 ms  77.58 ms  77.58 ms
+serialize-javascript                         39.93 ms/iter   (33.62 ms … 48.89 ms)  43.35 ms  48.89 ms  48.89 ms
+remix-typedjson serialize                    41.88 ms/iter   (33.17 ms … 64.09 ms)  45.69 ms  64.09 ms  64.09 ms
 
 summary
   escapeHtml
-   2.79x faster than serialize-javascript
-   3.62x faster than js-string-escape
-   4.35x faster than escapeHtml w/ fast-json-stable-stringify
-   5.94x faster than escapeHtml w/ json-stable-stringify
-   6.69x faster than escapeHtml w/ json-stringify-deterministic
-   24.2x faster than jsesc
+   2.42x faster than serialize-javascript
+   2.54x faster than remix-typedjson serialize
+   3.49x faster than js-string-escape
+   4.31x faster than escapeHtml w/ fast-json-stable-stringify
+   5.22x faster than escapeHtml w/ json-stable-stringify
+   6.22x faster than escapeHtml w/ json-stringify-deterministic
+   20.31x faster than escapeHtml w/ superjson.stringify
+   21.96x faster than jsesc
 ```
